@@ -1,0 +1,12 @@
+ul{
+	list-style: none;
+	border-style: groove;
+	margin: 10px 10px 10px 10px;
+}
+
+li{
+	margin: 10px 70px 20px 0;
+}
+h1{
+	color: black;
+}
