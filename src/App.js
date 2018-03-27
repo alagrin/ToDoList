@@ -1,28 +1,42 @@
 import React, { Component } from 'react';
 import './App.css';
-import Taskbar from './components/taskbar';
-import DisplayList from './components/displaylist';
-
-const taskItem = {
-  text: 'test',
-  text2: 'test2'
-}
+import TaskList from './components/tasklist';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      taskItems: taskItem
+      term: '',
+      tasks: []
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  handleChange(e) {
+    e.preventDefault();
+    this.setState({
+      term: e.target.value
+    });
+  }
+
+  onSubmit() {
+    this.setState({
+      tasks: [...this.state.tasks, this.state.term]
+    });
   }
 
   render() {
     return (
       <div className="App container-fluid">
+        <h1>My Task List</h1>
         <div className="row">
-          <Taskbar />
+          <div>
+              <input onChange={this.handleChange} type="text" />
+              <button onClick={this.onSubmit} className="btn-primary">Submit</button>
+          </div>
         </div>
-        <DisplayList taskItems={this.state.taskItems}/>
+        <TaskList tasks={this.state.tasks}/>
         </div>
     );
   }
