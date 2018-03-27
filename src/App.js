@@ -7,7 +7,8 @@ class App extends Component {
     super(props);
     this.state = {
       term: '',
-      tasks: []
+      tasks: [],
+      taskCount: 0
     };
     this.handleChange = this.handleChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -22,7 +23,8 @@ class App extends Component {
 
   onSubmit() {
     this.setState({
-      tasks: [...this.state.tasks, this.state.term]
+      tasks: [...this.state.tasks, this.state.term],
+      taskCount: this.state.taskCount + 1
     });
   }
 
@@ -31,12 +33,14 @@ class App extends Component {
       <div className="App container-fluid">
         <h1>My Task List</h1>
         <div className="row">
-          <div>
-              <input onChange={this.handleChange} type="text" />
-              <button onClick={this.onSubmit} className="btn-primary">Submit</button>
+          <div className="col">
+            <input onChange={this.handleChange} type="text" />
+          </div>
+          <div className="col">
+            <button onClick={this.onSubmit} className="btn btn-primary">Submit</button>
           </div>
         </div>
-        <TaskList tasks={this.state.tasks}/>
+        <TaskList taskCount={this.state.taskCount} tasks={this.state.tasks}/>
         </div>
     );
   }

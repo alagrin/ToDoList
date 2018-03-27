@@ -1,12 +1,15 @@
 .App {
   text-align: center;
-  padding: 20px;
 }
 
 .list-group {
   margin-top: 30px;
 }
 
+.list-group h4 {
+  margin: 20px;
+}
+
 button {
-  margin: 0 20px;
+  margin: 20px 0;
 }
